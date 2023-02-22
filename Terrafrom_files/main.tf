@@ -17,7 +17,7 @@ module "network" {
   natgateway_name       = "paula-NGW"
   # ----------------------- #
   security_group_name        = "paula-SG"
-  security_group_description = "Allow HTTP traffic from anywhere"
+  security_group_description = "CLUSTER SG"
   inport                     = ["80", "22", "443"]
   in_protocol               = "tcp"
   eg_port                    = 0
