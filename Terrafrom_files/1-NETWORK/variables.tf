@@ -7,6 +7,7 @@ variable subnets {}
 variable eks_tag {}
 variable availability_zones {}
 variable cidr_from_anywhere {}
+variable auto_assign_public_ip_state  {}
 ################
 variable public_route_name {}
 variable private_route_name {}

@@ -8,4 +8,12 @@ resource "aws_instance" "public-ec2" {
   tags = {
     Name = var.ec2_name
   }
+    provisioner "local-exec" {
+    command = "echo '${aws_instance.public-ec2.public_ip}' > instance_ip.txt"
+  }
+}
+
+resource "aws_iam_instance_profile" "test_profile1" {
+  name = "test_profile1"
+  role = "nodes_role1"
 }

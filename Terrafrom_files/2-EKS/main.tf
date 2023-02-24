@@ -17,13 +17,17 @@ resource "aws_eks_node_group" "nodes" {
   node_group_name = var.node_group_name
   node_role_arn   = var.node_role_arn
   subnet_ids      = var.subnets_nodes
-
+  # disk_size
+  # instance_types
+  
   scaling_config {
     desired_size = var.desired_size
     max_size     = var.max_size
     min_size     = var.min_size
   }
-
+remote_access {
+    ec2_ssh_key = "paula"
+  }
   update_config {
     max_unavailable = var.max_unavailable
   }

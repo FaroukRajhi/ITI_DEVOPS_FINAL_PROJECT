@@ -15,10 +15,11 @@ resource "aws_subnet" "subnet" {
   vpc_id            = aws_vpc.mainvpc.id
   cidr_block        = each.value
   availability_zone = var.availability_zones[index(keys(var.subnets), each.key) % length(var.availability_zones)]
-  # auto_assign_public_ip_state       = var.true
+   # Only set the map_public_ip_on_launch attribute for public subnets
+  map_public_ip_on_launch = each.key == "public_subnet1" || each.key == "public_subnet2" ? true : false
   tags              = {
     Name = each.key
-    "kubernetes.io/cluster/eks"       = var.eks_tag 
+    "kubernetes.io/cluster/Paula-cluster"       = var.eks_tag 
     "kubernetes.io/role/internal-elb" = 1
   }
 }
@@ -121,7 +122,7 @@ resource "aws_security_group_rule" "ingress" {
   from_port = each.value
   to_port   = each.value
   protocol  = var.in_protocol
-  cidr_blocks = var.cidr_from_anywhere
+  cidr_blocks = [var.cidr_from_anywhere]
   security_group_id = aws_security_group.secgroup.id
 }
 resource "aws_security_group_rule" "egress" {
@@ -129,6 +130,6 @@ resource "aws_security_group_rule" "egress" {
   from_port = var.eg_port
   to_port   = var.eg_port
   protocol  = var.eg_protocol
-  cidr_blocks = var.cidr_from_anywhere
+  cidr_blocks = [var.cidr_from_anywhere]
   security_group_id = aws_security_group.secgroup.id
 }
