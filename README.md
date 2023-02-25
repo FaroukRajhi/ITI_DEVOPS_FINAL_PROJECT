@@ -105,3 +105,12 @@ Jekins CI/CD Repository:
 
 https://github.com/paulahakeem/ITI-Final-CI-CD-Project-Application.git
 https://github.com/paulahakeem/APP_USED_FOR_ITI_DEVOPS_PROJECT.git
+
+
+
+
+# SCREENSHOTS FROM CONSOLE 
+![111111](https://user-images.githubusercontent.com/116673091/221338968-dc381e6b-d35b-4e5e-a869-72699d8c5f0e.png)
+![```111111](https://user-images.githubusercontent.com/116673091/221338962-67a411a7-9a55-4eba-bf44-c6934659373f.png)
+
+
